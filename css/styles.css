@@ -17,6 +17,7 @@
   --secondary-background-color: #F5F4FA;
   --social-team-color: #AFB1B8;
   --social-footer-color: #ffffff;
+  --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 p, h1, h2, h3, h4, h5, h6 {
@@ -89,13 +90,25 @@ body {
   padding-top: 32px;
   padding-bottom: 32px;
   color: var(--header-text-color);
+  position: relative;
+  transition: color var(--transition);
 }
+
 .nav-link:hover,
 .nav-link:focus {
   color: var(--effects-color);
 }
 .active {color: var(--effects-color);}
-
+.nav-link.current::after {
+  content: '';
+display: block;
+width: 100%;
+position: absolute;
+height: 4px;
+border-radius: 2px;
+background-color: var(--effects-color); 
+bottom: 0; 
+}
 .header-contacts,
 .header-contacts .contacts-item {
   display: flex;
@@ -103,6 +116,7 @@ body {
   align-items: center;
   color: var(--header-contact-color);
   vertical-align: baseline;
+
 }
 
 .contacts-item:not(:last-child) {
@@ -120,6 +134,7 @@ body {
   color: var(--header-contact-color);
   padding-top: 32px;
   padding-bottom: 32px;
+transition: color var(--transition), fill var(--transition);
 }
 
 .contacts-icon {
@@ -167,6 +182,7 @@ body {
   background-color: var(--effects-color);
   border: 0;
   border-radius: 4px;
+  transition: color var(--transition);
 }
 .hero-btn:hover,
 .hero-btn:focus
@@ -297,6 +313,7 @@ body {
 }
 .social-icon {
   fill: var(--social-team-color);
+   transition: fill var(--transition);
 }
 
 .social-link {
@@ -305,6 +322,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color var(--transition);
 }
 .social-link:hover,
 .social-link:focus {
@@ -334,8 +352,28 @@ body {
   margin-left: 30px;
   margin-top: 30px;
 }
+.services-item-wrap {
+position: relative;
+overflow: hidden;
+}
 .services-img {
   display: block;
+}
+.services-text {
+  position: absolute;
+  bottom: 0;
+font-weight: 700;
+font-size: 14px;
+line-height: 1,14;
+text-align: center;
+letter-spacing: 0.03em;
+text-transform: uppercase;
+color: var(--footer-text-color);
+background-color: rgba(47, 48, 58, 0.8);
+height: 70px;
+width: 370px;
+padding-top: 27px;
+
 }
 /* ---------------clients--------------------------------- */
 .clients {
@@ -362,11 +400,13 @@ body {
   border: 1px solid var(--social-team-color);
   box-sizing: border-box;
   border-radius: 4px;
+  transition: border-color var(--transition);
 }
 .clients-icon {
   fill:var(--social-team-color);
   width: 108px;
   height: 60px;
+  transition: fill var(--transition);
 }
 
 .clients-link:hover,
@@ -414,6 +454,7 @@ body {
   line-height: 1.71;
   letter-spacing: 0.03em;
   color: var(--footer-text-color);
+  transition: color var(--transition);
 }
 .address-link {
   font-style: normal;
@@ -421,6 +462,7 @@ body {
   line-height: 1.71;
   letter-spacing: 0.03em;
   color: var(--footer-contact-color);
+  transition: color var(--transition);
 }
 .address-map:focus,
 .address-map:hover,
@@ -470,6 +512,7 @@ body {
   color: var(--button-primary-color);
   border: 0;
   border-radius:  4px;
+  transition: color var(--transition); backgound-color var(--transition), box-shadow var(--transition);
 }
 .filter-btn:focus,
 .filter-btn:hover
@@ -492,15 +535,20 @@ body {
 
 .project-link {
   display: block;
+  transition: box-shadow var(--transition);
 }
 .project-link:hover,
 .project-link:focus {
    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
+}
+.project-item-wrup {
+  position: relative;
+  overflow: hidden;
 }
 .project-img {
   display: block;
 }
+
 .project-img-description {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -508,6 +556,23 @@ body {
   padding-right: 23px;
   border: 1px solid #ECECEC;
   border-top: none;
+}
+.project-picture-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(33, 150, 243, 0.9);
+  font-size: 18px;
+  line-height: 1,56;
+  letter-spacing: 0.03em;
+  color: var(--footer-text-color);
+  padding: 63px 24px;
+  height: 100%;
+  transform: translateY(100%);
+  transition: transform var(--transition); 
+}
+.project-item:hover .project-picture-text {
+  transform: translateY(0);
 }
 .project-title {
   font-weight: 700;
