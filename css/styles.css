@@ -574,7 +574,8 @@ body {
   transform: translateY(100%);
   transition: transform var(--transition);
 }
-.project-item:hover .project-picture-text {
+.project-link:hover .project-picture-text,
+.project-link:focus .project-picture-text {
   transform: translateY(0);
 }
 .project-title {
